@@ -6,7 +6,9 @@ import { copyFileSync } from "fs";
 
 const prod = (process.argv[2] === "production");
 
-const pluginFolderPath = join(process.env.OBSIDIAN_VAULT_PATH, ".obsidian", "plugins", "yfloop");
+const pluginFolderPath = prod
+	? join("./", ".obsidian", "plugins", "yfloop")
+	: join(process.env.OBSIDIAN_VAULT_PATH, ".obsidian", "plugins", "yfloop")
 
 const sourceJavaScriptFilePath = join(process.cwd(), "main.mjs");
 const pluginJavaScriptFilePath = join(pluginFolderPath, "main.js");
@@ -20,22 +22,26 @@ const pluginHotreloadFilePath = join(pluginFolderPath, ".hotreload");
 const sourceStylesFilePath = join(process.cwd(), "styles.css");
 const pluginStylesFilePath = join(pluginFolderPath, "styles.css");
 
-const copyManifestPlugin = (pairs) => ({
-    name: 'copy-manifest-plugin',
-    setup(build) {
-        build.onEnd(async () => {
-			for (const [sourcePath, targetPath] of pairs) {
-				try {
-					copyFileSync(sourcePath, targetPath);
+const copyPlugin = (pairs) => {
+
+
+	return {
+	    name: "copy-plugin",
+	    setup(build) {
+	        build.onEnd(async () => {
+				for (const [sourcePath, targetPath] of pairs) {
+					try {
+						copyFileSync(sourcePath, targetPath);
+					}
+					catch (e) {
+						console.error("Failed to copy file:", e);
+					}
 				}
-				catch (e) {
-					console.error('Failed to copy file:', e);
-				}
-			}
-            
-        });
-    },
-});
+	            
+	        });
+	    },
+	}
+};
 
 const context = await esbuild.context({
 	entryPoints: [sourceJavaScriptFilePath],
@@ -59,7 +65,7 @@ const context = await esbuild.context({
 	plugins: prod
 		? []
 		: [
-			copyManifestPlugin([
+			copyPlugin([
 				[sourceManifestFilePath, pluginManifestFilePath],
 				[sourceHotreloadFilePath, pluginHotreloadFilePath],
 				[sourceStylesFilePath, pluginStylesFilePath]
