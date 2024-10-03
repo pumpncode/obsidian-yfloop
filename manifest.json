@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
+	"id": "yfloop",
+	"name": "yfloop",
+	"version": "0.1.0",
+	"minAppVersion": "1.6.7",
+	"description": "Make this collection of small tweaks your first, last or only plugin.",
 	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"authorUrl": "https://github.com/nnmrts",
+	"fundingUrl": "https://github.com/nnmrts",
 	"isDesktopOnly": false
 }
