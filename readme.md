@@ -11,7 +11,7 @@ Make this collection of small tweaks **y**our **f**irst, **l**ast **o**r **o**nl
 - Planned
 	- Remove the brackets around footnote links in the reading view (e.g. `1` instead of `[1]`).
 
-## Graph View
+### Graph View
 
 - Planned
 	- Automatic node coloring based on path, depth and/or content.
