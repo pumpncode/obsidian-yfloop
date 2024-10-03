@@ -1,7 +1,7 @@
 {
 	"id": "yfloop",
 	"name": "yfloop",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"minAppVersion": "1.6.7",
 	"description": "Make this collection of small tweaks your first, last or only plugin.",
 	"author": "Obsidian",

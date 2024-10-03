@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-yfloop",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Make this collection of small tweaks your first, last or only plugin (for Obsidian).",
 	"main": "main.js",
 	"scripts": {
